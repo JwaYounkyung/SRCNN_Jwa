@@ -1,2 +1,2 @@
-# CV
+# SRCNN
 computer vision class
