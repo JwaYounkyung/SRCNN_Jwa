@@ -1,3 +1,5 @@
+''' 코드 참조 및 필요 부분 변경 '''
+''' transform 과정 추가 '''
 import h5py
 import numpy as np
 import torchvision

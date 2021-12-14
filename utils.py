@@ -1,6 +1,6 @@
+''' 코드 참조 '''
 import torch
 import numpy as np
-
 
 def convert_rgb_to_y(img):
     if type(img) == np.ndarray:
@@ -45,24 +45,3 @@ def convert_ycbcr_to_rgb(img):
         return torch.cat([r, g, b], 0).permute(1, 2, 0)
     else:
         raise Exception('Unknown Type', type(img))
-
-
-def calc_psnr(img1, img2):
-    return 10. * torch.log10(1. / torch.mean((img1 - img2) ** 2))
-
-
-class AverageMeter(object):
-    def __init__(self):
-        self.reset()
-
-    def reset(self):
-        self.val = 0
-        self.avg = 0
-        self.sum = 0
-        self.count = 0
-
-    def update(self, val, n=1):
-        self.val = val
-        self.sum += val * n
-        self.count += n
-        self.avg = self.sum / self.count
