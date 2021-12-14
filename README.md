@@ -25,5 +25,11 @@ SRCNN paper( Image Super-Resolution Using Deep Convolutional Networks
 
 Reference Code에서 제공하는 upscaling factor 3으로 가공된 데이터를 사용함
 
+## Usage
+1. https://www.dropbox.com/s/curldmdf11iqakd/91-image_x3.h5?dl=0 에서 파일 다운 후 'dataset' 폴더로 이동
+2. SRCNN.ipynb run
+3. results.ipynb run 
+4. reconstructed_image.py run 
+
 ## Reference Code
 https://github.com/yjn870/SRCNN-pytorch
