@@ -12,7 +12,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 ### parameter setting
 model_path = './results/model_weight_915.pth'
-image_path = './dataset/butterfly_GT.bmp'
+image_path = './dataset/butterfly_bicubic_x3_gaussian.bmp'
 
 kernel_size = [9,1,5]
 
@@ -47,7 +47,7 @@ with torch.no_grad():
     preds = model(y)
 
 psnr = PSNR(crop_y, preds)
-print('PSNR of SRCNN model', psnr)
+print('PSNR of SRCNN model', psnr) # 36.1079
 
 ### crop cb and cr
 cb = ycbcr[..., 1]
@@ -65,7 +65,7 @@ preds = preds.mul(255.0).cpu().numpy().squeeze(0).squeeze(0)
 reconstructed_ycbcr = np.array([preds, cb, cr]).transpose([1,2,0]) # CxHxW to HxWxC
 reconstructed_rgb = np.clip(convert_ycbcr_to_rgb(reconstructed_ycbcr), 0.0, 255.0).astype(np.uint8)
 reconstructed_image = Image.fromarray(reconstructed_rgb)
-reconstructed_image.save('./results/butterfly_GT_srcnn_x3.bmp')
+reconstructed_image.save('./results/butterfly_srcnn.bmp')
 ''''''
 
 
